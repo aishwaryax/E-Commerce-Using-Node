@@ -1,0 +1,103 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<header>
+    <div class="top_container">
+        <div class="top">
+            <div class="contacts">
+                <div><a href="javascript:;" title="Mail" class="mail"><i class="fas fa-envelope"></i>hello@farmersfriend.com</a></div>
+                <div class="shipping">Free Shipping for all Orders above ₹499</div>
+            </div>
+            <div class="user_options">
+                <div class="language">
+                    <div class="current_language"><a href="javascript:;" title="Languages"><i class="fas fa-globe"></i>English<i class="chevron fas fa-chevron-down"></i></a></div>
+                    <div class="language_options">
+                        <a href="javascript:;" title="English">English</a>
+                    </div>
+                </div>
+                <% if (isAuthenticated) { %>
+                    <form action="/logout" method="post">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <div class="login"><button type="submit" title="Login"><i class="fas fa-user"></i>Logout</button></div>
+                    </form>
+                    <% } %>
+            </div>
+        </div>
+    </div>
+    <div class="bottom_container">
+        <div class="bottom">
+            <div class="logobars">
+                <div class="logo">
+                    <a href="/" title="Farmer's Friends"><img src="/img/logo.png"></a>
+                </div>
+                <div class="bars"><a href="javascript:;" title="Menu"><i class="fas fa-bars"></i></a></div>
+            </div>
+            <nav>
+                <ul class="main_menu">
+                    <li><a href="/" title="Home">home</a></li>
+                    <li><a href="/products" title="Shop">shop</a></li>
+                    <% if (isAuthenticated) { %>
+                        <li><a href="/orders" title="Shop">orders</a></li>
+                        <li><a href="/admin/add-product" title="Shop">add product</a></li>
+                        <li><a href="/admin/products" title="Shop">admin products</a></li>
+
+
+
+                        <% } else { %>
+                            <li><a href="/login" title="Login">login</a></li>
+                            <li><a href="/signup" title="Shop">register</a></li>
+                            <% } %>
+
+                </ul>
+            </nav>
+            <% if (isAuthenticated) { %>
+                <div class="shopping_bag">
+
+                    <ul class="main_menu">
+                        <span class="icon"><a href="/cart" title="Cart"><i class="fas fa-shopping-bag"></i></a>
+                        </span>
+                        <form action="/logout" method="post">
+                        </form>
+                    </ul>
+
+                </div>
+                <% } %>
+        </div>
+    </div>
+    <div class="mobile_menu">
+        <div class="mobile_container">
+            <div class="logo">
+                <a href="/" title="Ogani"><img src="img/logo.png"></a>
+            </div>
+            <div class="shopping_bag">
+                <span class="icon"><a href="/" title="Cart"><i class="fas fa-shopping-bag"></i><span>3</span></a>
+                </span>
+            </div>
+            <div class="user_options">
+                <div class="language">
+                    <div class="m_current_language"><a href="javascript:;" title="Languages"><i class="fas fa-globe"></i>English<i class="m_chevron fas fa-chevron-down"></i></a></div>
+                    <div class="m_language_options">
+                        <a href="javascript:;" title="English">English</a>
+                        <a href="javascript:;" title="Spanish">Spanish</a>
+                    </div>
+                </div>
+                <div class="login"><a href="javascript:;" title="Login"><i class="fas fa-user"></i>Login</a></div>
+            </div>
+            <nav>
+                <ul class="main_menu">
+                    <li><a href="/" title="Home">home</a></li>
+                    <li><a href="/products" title="Shop">shop</a></li>
+                    <li><a href="/add-product" title="Shop">add product</a></li>
+                    <li><a href="/products" title="Shop">admin products</a></li>
+                    <li><a href="/products" title="Shop">logout</a></li>
+                </ul>
+            </nav>
+            <div class="contacts">
+                <div><a href="javascript:;" title="Mail" class="mail"><i class="fas fa-envelope"></i>hello@farmersfriend.com</a></div>
+                <div class="shipping">Free Shipping for all orders above ₹499</div>
+            </div>
+            <div class="close_mobile"><a href="javascript:;" title="Exit"><i class="far fa-window-close"></i></a></div>
+        </div>
+    </div>
+</header>

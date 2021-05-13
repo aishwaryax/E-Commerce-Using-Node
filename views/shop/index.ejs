@@ -1,0 +1,75 @@
+<%- include('../includes/head.ejs') %>
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 200px;
+            margin: auto;
+            text-align: center;
+            font-family: arial;
+            padding: 5%
+        }
+        
+        .price {
+            color: grey;
+            font-size: 22px;
+        }
+        
+        .card button {
+            border: none;
+            outline: 0;
+            padding: 5%;
+            color: white;
+            background-color: #7fad39;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+        
+        .card button:hover {
+            opacity: 0.7;
+        }
+    </style>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+            <section class="home">
+                <div class="departments">
+                    <div class="title"><a href="javascript:;" title="Departments"><span><i class="fas fa-bars"></i>All departments</span><i class="departments_chevron fas fa-chevron-up"></i></a></div>
+                    <ul>
+                        <li><a href="javascript:;" title="Product">Fruits</a></li>
+                        <li><a href="javascript:;" title="Product">Vegetables</a></li>
+                        <li><a href="javascript:;" title="Product">Fruit</a></li>
+                        <li><a href="javascript:;" title="Product">Fresh Berries</a></li>
+                        <li><a href="javascript:;" title="Product">Ocean Foods</a></li>
+                        <li><a href="javascript:;" title="Product">Dairy</a></li>
+                        <li><a href="javascript:;" title="Product">Cereals</a></li>
+                    </ul>
+                </div>
+                <div class="col2">
+                    <div>
+                        <div class="search">
+                            <input type="text" placeholder="What do you need?">
+                            <a href="/products" title="Search">Search</a>
+                        </div>
+                        <div class="support">
+                            <div>
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <span class="phone">+91 1234567890</span>
+                                <span>support 24/7 time</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="banner">
+                        <h5>fresh fruit</h5>
+                        <h2>100% organic <span>vegetables</span></h2>
+                        <h6>free pickup and delivery available</h6>
+                        <a href="/products" title="Shop">shop now</a>
+                    </div>
+                </div>
+            </section>
+
+            </div>
+    </body>

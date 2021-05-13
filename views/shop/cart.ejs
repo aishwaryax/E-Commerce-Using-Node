@@ -1,0 +1,48 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/cart.css">
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+            <section class="breadcrumb">
+                <div>
+                    <h2>Shopping Cart</h2>
+                    <h6><span>Order Now!</span></h6>
+                </div>
+            </section>
+            <% if (products.length > 0) { %>
+                <section class="cart">
+                    <div class="title">
+                        <h2>Products</h2>
+                        <div>
+                            <h2>Quantity</h2>
+                        </div>
+                    </div>
+                    <% products.forEach(p => { %>
+                        <div class="record">
+                            <div class="image_holder">
+
+                                <h4>
+                                    <%= p.productId.title %>
+                                </h4>
+                            </div>
+                            <div class="text_holder">
+                                <h3>
+                                    <%= p.quantity %>
+                                </h3>
+                                <form action="/cart-delete-item" method="POST">
+                                    <input type="hidden" value="<%= p._id %>" name="productId">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                    <button type="submit" href="javascript:;" title="remove"><i class="fas fa-times"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                        <% }) %>
+
+                            <div class="btn_holder">
+                                <a href="/" title="Shop">continue shopping</a>
+                                <a href="/checkout" title="Update"><i class="fas fa-spinner"></i> update cart</a>
+                            </div>
+                </section>
+                <% } %>
+                    <%- include('../includes/end.ejs') %>

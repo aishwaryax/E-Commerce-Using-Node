@@ -1,0 +1,18 @@
+<style>
+    .button {
+        border: none;
+        outline: 0;
+        padding: 5%;
+        color: white;
+        background-color: #7fad39;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        font-size: 18px;
+    }
+</style>
+<form action="/cart" method="post">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <p><button type="submit">Add to Cart</button></p>
+    <input type="hidden" name="productId" value="<%= product._id %>">
+</form>

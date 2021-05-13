@@ -1,0 +1,33 @@
+<%- include('../includes/head.ejs') %>
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+
+            <section class="product_info">
+                <div class="product_details">
+                    <div class="image_holder">
+                        <img src="/<%= product.imageUrl %>">
+                    </div>
+                    <div class="text_holder">
+                        <div class="overview">
+                            <h2>
+                                <%= product.title %>
+                            </h2>
+                            <br />
+                            <div class="price">₹
+                                <%= product.price %>
+                            </div>
+                            <p>
+                                <%= product.description %>
+                            </p>
+                            <div class="actions">
+                                <% if (isAuthenticated) { %>
+                                    <%- include('../includes/add-to-cart-co.ejs') %>
+                                        <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <%- include('../includes/end.ejs') %>
