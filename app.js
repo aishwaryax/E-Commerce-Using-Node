@@ -98,9 +98,10 @@ app.use((req, res, next) => {
 app.use(flash())
 
 app.use('/admin', adminRoutes)
+app.post('/create-order', isAuth, shopController.postOrder)
+
 app.use('/500', errorController.get500)
 
-app.post('/create-order', isAuth, shopController.postOrder)
 
 
 

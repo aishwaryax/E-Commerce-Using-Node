@@ -15,9 +15,14 @@
             <% if (products.length > 0) { %>
                 <section class="cart">
                     <div class="title">
-                        <h2>Products</h2>
+                        <div>
+                            <h2>Product</h2>
+                        </div>
                         <div>
                             <h2>Quantity</h2>
+                        </div>
+                        <div>
+                            <h2>Price</h2>
                         </div>
                     </div>
                     <% products.forEach(p => { %>
@@ -31,6 +36,11 @@
                             <div class="text_holder">
                                 <h3>
                                     <%= p.quantity %>
+                                </h3>
+                            </div>
+                            <div class="text_holder">
+                                <h3>
+                                    <%= p.productId.price %>
                                 </h3>
                             </div>
                         </div>
@@ -48,7 +58,8 @@
                                     </div>
                                     <form action="/create-order" method="POST">
                                         <!-- <a href="javascript:;" title="Checkout">proceed to checkout</a> -->
-                                        <script src=" https://checkout.stripe.com/checkout.js " class="stripe-button " data-key="pk_test_StfuT8InVYLKwt2VBYNVTSF700XdCKsqTU" data-amount="<%=totalSum %>" data-name="Your Order" data-description="All the items you ordered" data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                        <script src=" https://checkout.stripe.com/checkout.js " class="stripe-button " data-key="pk_test_StfuT8InVYLKwt2VBYNVTSF700XdCKsqTU" data-amount="<%= totalSum* 100  %> " data-name="Your Order" data-description="All the items you ordered" data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
                                             data-locale="auto" data-currency="inr">
                                         </script>
                                     </form>

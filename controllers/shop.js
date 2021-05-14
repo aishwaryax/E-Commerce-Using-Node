@@ -104,6 +104,7 @@ exports.postCart = (req, res, next) => {
 
 exports.postCartDeleteProduct = (req, res, next) => {
     const prodId = req.body.productId
+    console.log(prodId)
     req.user.removeFromCart(prodId)
     return res.redirect('/cart')
 }
@@ -132,8 +133,8 @@ exports.postOrder = (req, res, next) => {
             return order.save()
                 .then(result => {
                     const charge = stripe.charges.create({
-                        amount: totalSum * 100,
-                        currency: 'usd',
+                        amount: totalSum,
+                        currency: 'inr',
                         description: 'Demo Order',
                         source: token,
                         metadata: { order_id: result._id.toString() }
@@ -177,17 +178,17 @@ exports.getInvoice = (req, res, next) => {
             pdfDoc.pipe(fs.createWriteStream(invoicePath))
             pdfDoc.pipe(res)
 
-            pdfDoc.fontSize('26').text('Invoice', { underline: true })
-            pdfDoc.text('--------------------------------')
+            pdfDoc.fontSize('22').text('Invoice', { underline: true })
+            pdfDoc.text('----------------------------------------------------------')
             let totalPrice = 0
             order.products.forEach(prod => {
                 totalPrice += prod.quantity * prod.product.price
-                pdfDoc.fontSize('20').text(prod.product.title + '   -    ' + prod.quantity + '    x   ' + '$' + prod.product.price)
+                pdfDoc.fontSize('16').text(prod.product.title + '   -    ' + prod.quantity + '    x   ' + 'INR' + prod.product.price)
             })
 
-            pdfDoc.fontSize('26').text('---------------------------------')
+            pdfDoc.fontSize('22').text('----------------------------------------------------------')
 
-            pdfDoc.text('Total Price: $' + totalPrice)
+            pdfDoc.text('Total Price: INR' + totalPrice)
 
             pdfDoc.end()
 

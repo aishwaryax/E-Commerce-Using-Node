@@ -8,25 +8,53 @@
                 <% if (orders.length <= 0) { %>
                     <h1>Nothing there!</h1>
                     <% } else { %>
-                        <ul class="orders">
+                        <section class="cart">
+                            <div class="title">
+                                <div>
+                                    <h2>Order ID</h2>
+                                </div>
+                                <div>
+                                    <h2>Invoice</h2>
+                                </div>
+                                <div>
+                                    <h2>Products</h2>
+                                </div>
+                            </div>
                             <% orders.forEach(order => { %>
-                                <li class="orders__item">
-                                    <h1>Order - #
-                                        <%= order._id %>
-                                            <a href='/orders/<%= order._id %>'>Invoice</a>
-                                    </h1>
-                                    <ul class="orders__products">
-                                        <% order.products.forEach(product => { %>
-                                            <li class="orders__products-item">
-                                                <%= product.product.title %> (
-                                                    <%= product.quantity %>)
+                                <div class="record">
+                                    <div class="image_holder">
 
-                                            </li>
-                                            <% }); %>
-                                    </ul>
-                                </li>
-                                <% }); %>
-                        </ul>
+                                        <h4>
+                                            Order #
+                                            <%= order._id %>
+
+                                        </h4>
+                                    </div>
+                                    <div class="text_holder">
+                                        <a href='/orders/<%= order._id %>'>Invoice</a>
+
+                                    </div>
+
+                                    <div class="text_holder">
+                                        <h3>
+                                            <ul class="orders__products">
+                                                <% order.products.forEach(product => { %>
+                                                    <li class="orders__products-item">
+                                                        <%= product.product.title %> [
+                                                            <%= product.quantity %> ]
+
+
+                                                    </li>
+                                                    <% }); %>
+                                            </ul>
+                                        </h3>
+
+                                    </div>
+                                </div>
+                                <% }) %>
+                        </section>
                         <% } %>
             </main>
+
+
             <%- include('../includes/end.ejs') %>
